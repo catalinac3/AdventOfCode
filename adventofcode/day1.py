@@ -1,13 +1,8 @@
-from aocd.models import Puzzle
 from aocd import submit
+import utils
 
 
-def readData(year, day, splitBy):
-    puzzle = Puzzle(year=year, day=day)
-    dataList = puzzle.input_data.split(splitBy)
-    return dataList
-
-elfenCaloriesList = readData(2022, 1,'\n\n')
+elfenCaloriesList = utils.readData(2022, 1,'\n\n')
 
 elfenSumList = []
 for elf in elfenCaloriesList:

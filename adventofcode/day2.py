@@ -1,7 +1,6 @@
-from aocd.models import Puzzle
 from aocd import submit
 
-from day1 import readData 
+import utils
 
 # score:
 # rock defeats scissors
@@ -75,10 +74,9 @@ def pointsSumB(dataList, pointsGameOutCome, pointsForm):
         game = tuple(data.split())
         pointsSumB += pointsGameOutCome.get(game[1])
         pointsSumB += pointsForm.get(game)
-    print(pointsSumB)
     return pointsSumB
 
 
-dataList = readData(2022, 2,'\n')
+dataList = utils.readData(2022, 2,'\n')
 #submit(pointsSumA(dataList, pointsFormSelectedA, pointsGameOutcomeA), part="a", day=2, year=2022)
-submit(pointsSumB(dataList,pointsGameOutcomeB, pointsFormSelectedB), part="b", day=2, year=2022)
+#submit(pointsSumB(dataList,pointsGameOutcomeB, pointsFormSelectedB), part="b", day=2, year=2022)
