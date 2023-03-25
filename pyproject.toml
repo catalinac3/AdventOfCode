@@ -1,13 +1,12 @@
 [tool.poetry]
 name = "adventofcode"
 version = "0.1.0"
-description = ""
+description = "advent of code 2022"
 authors = ["catalina <cdianacatalina@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-
 
 [build-system]
 requires = ["poetry-core"]
