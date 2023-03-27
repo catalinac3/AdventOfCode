@@ -1,5 +1,5 @@
 import utils
-# from aocd import submit
+from aocd import submit
 
 dataList = utils.readData(2022, 3,'\n')
 
@@ -47,10 +47,6 @@ def calculateResultPartA():
     repeatedElements = getRepeatedElements(dataList)
     return calculateSumWithLetterWeight(repeatedElements)
 
-print(calculateResultPartA())
-
-# print(dataList)
-
 # plan:
 # loop through the data every 3 items
 # find common item for those 3 items - function
@@ -85,4 +81,5 @@ testList = listExample + listExample1
 print(getAllRepeatedItems(testList)) # ---> {'r','Z'}
 print(getAllRepeatedItems(dataList)) # ---> {'r','Z'}
 
-print(calculateResultPartB())
+#submit(calculateResultPartA(), part="a", day=3, year=2022)
+#submit(calculateResultPartB(), part="b", day=3, year=2022)

@@ -1,11 +1,17 @@
-from ..adventofcode.day3 import getRepeatedElements 
+from ..adventofcode.day3 import repeatedItem
+from dataclasses import dataclass
 
-datatest = ['vJrwpWtwJgWrhcsFMMfFFhFp',
-'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
-'PmmdzqPrVvPwwTWBwg',
-'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
-'ttgJtRGJQctTZtZT',
-'CrZsJsPPZsGzwwsLwLmpwMDw']
-def day3_test():
-    repeated = getRepeatedElements(datatest)
-    assert repeated == {'p', 'L', 'P', 'v', 't', 's'}
+def test_repeatedItem():
+
+    @dataclass
+    class TestCase:
+        inputList: list
+        expectedItem: str
+
+    testCases = [TestCase(inputList=['vJrwpWtwJgWrhcsFMMfFFhFp','jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL','PmmdzqPrVvPwwTWBwg'],
+                          expectedItem="r"),
+                 TestCase(inputList=['wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn','ttgJtRGJQctTZtZT','CrZsJsPPZsGzwwsLwLmpwMDw'],
+                          expectedItem='Z')]
+
+    for test in testCases:
+        assert repeatedItem(test.inputList) == test.expectedItem

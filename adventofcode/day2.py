@@ -78,5 +78,5 @@ def pointsSumB(dataList, pointsGameOutCome, pointsForm):
 
 
 dataList = utils.readData(2022, 2,'\n')
-#submit(pointsSumA(dataList, pointsFormSelectedA, pointsGameOutcomeA), part="a", day=2, year=2022)
-#submit(pointsSumB(dataList,pointsGameOutcomeB, pointsFormSelectedB), part="b", day=2, year=2022)
+submit(pointsSumA(dataList, pointsFormSelectedA, pointsGameOutcomeA), part="a", day=2, year=2022)
+submit(pointsSumB(dataList,pointsGameOutcomeB, pointsFormSelectedB), part="b", day=2, year=2022)
