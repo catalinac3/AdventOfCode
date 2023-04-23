@@ -54,7 +54,6 @@ def calculateDirsSize(dataList):
             file = data.split(" ")
             # add file size to directories that contain this file
             addFileToRelatedPaths(path, sizeDir, file)
-
     return sizeDir
 
 def addFileToRelatedPaths(path, sizeDir, file):
@@ -72,5 +71,27 @@ def calcSumAllUnder100000(dataListExample):
             sum+= value
     return sum
 
-print(calcSumAllUnder100000(dataListExample)) # ----> 95437
-print(calcSumAllUnder100000(dataList)) 
+def identifyFile(sizeDir, neededFreeSpace):
+    smallest = sizeDir['/root']
+    filePath = '/root'
+    for path , size in sizeDir.items():
+        if size >= neededFreeSpace:
+            if size < smallest:
+                smallest = size
+                filePath = path
+    print(f'smallest {smallest}, file {filePath}')
+    return smallest
+
+# print(calcSumAllUnder100000(dataListExample)) # ----> 95437
+# print(calcSumAllUnder100000(dataList)) 
+
+def identifyFileToErase(dataList):
+    sizeDir = calculateDirsSize(dataList)
+    updateRequirement = 30000000
+    totalDiskAvailable = 70000000
+    freeSpace = totalDiskAvailable - sizeDir['/root'] # 25204323
+    neededFreeSpace = updateRequirement - freeSpace # 4795677
+    smallest = identifyFile(sizeDir, neededFreeSpace)
+    return smallest
+
+print(identifyFileToErase(dataList))
