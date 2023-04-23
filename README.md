@@ -1,7 +1,7 @@
 https://adventofcode.com/
 https://github.com/wimglenn/advent-of-code-data
 
-![image](https://user-images.githubusercontent.com/56088689/230434268-82a1a8f6-9417-4ca6-9db3-4a5c87f480c4.png)
+<img width="487" alt="image" src="https://user-images.githubusercontent.com/56088689/233850632-c095a8c6-80b1-49a3-b825-c11d395891f0.png">
 
 
 
