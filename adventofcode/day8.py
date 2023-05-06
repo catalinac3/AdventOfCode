@@ -73,4 +73,70 @@ def findVisible(dataList):
     visibleInnerTress = calculateVisibleInnerTrees(organizedData)
     return visibleBorders + visibleInnerTress
 
-print(findVisible(dataList))
+# Part B
+# Best spot for a tree house
+
+def calcScenicScore(data, row, col, organizedData):
+
+    upScore = 0
+    # iterate from tree to border
+    for i in range(row - 1, -1,-1):
+        if organizedData[i][col] < data:
+            upScore += 1
+        else:
+            upScore += 1
+            break    
+    
+    downScore = 0
+    for i in range(row + 1, len(organizedData)):
+        if organizedData[i][col] < data:
+            downScore += 1
+        else:
+            downScore += 1
+            break 
+   
+    leftScore = 0
+    for j in range(col - 1,-1,-1):
+        if organizedData[row][j] < data:
+            leftScore += 1
+        else:
+            leftScore += 1
+            break 
+
+    rightScore = 0 
+    for j in range(col + 1, len(organizedData[0])):
+        if organizedData[row][j] < data:
+            rightScore += 1
+        else:
+            rightScore += 1
+            break 
+
+    if data == str(5):   
+        print(f'data {data}, row {row}, column {col}')
+        print(f'downScore {downScore}, upScore {upScore}, rightScore {rightScore}, leftScore {leftScore}')
+        print(f'scenic score {downScore * upScore * rightScore * leftScore}')
+
+    return downScore * upScore * rightScore * leftScore
+
+
+def maxScenicScore(organizedData):
+    endRow = len(organizedData) 
+    endColumn = len(organizedData[0]) 
+   
+    maximumScenicScore = 0
+    # iterate through all trees
+    for i in range(0, endRow):
+        for j in range(0, endColumn):
+            newScenicScore = calcScenicScore(organizedData[i][j], i, j, organizedData)
+            if newScenicScore > maximumScenicScore:
+                maximumScenicScore = newScenicScore   
+    return maximumScenicScore
+
+def highestScenicScore(dataList):
+    organizedData = organizeData(dataList)
+    maximumScenicScore = maxScenicScore(organizedData)
+    return maximumScenicScore
+
+
+# print(highestScenicScore(data_example))
+print(highestScenicScore(dataList))
