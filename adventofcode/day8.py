@@ -27,36 +27,27 @@ def calculateVisibleBorders(organizedData):
     return rows * 2 + (columns - 2) * 2
 
 def isVisible(data, row, col, organizedData):
-    visibleLookDown = True
-    for i in range(0, row):
-        if organizedData[i][col] >= data:
-            visibleLookDown = False
-
-    if visibleLookDown:
+    treesLookingDown = [organizedData[i][col] for i in range(0, row)]
+    if max(treesLookingDown) < data:
+        # is visible looking down
         return True
     
-    visibleLookUp = True
-    for i in range(row + 1, len(organizedData)):
-        if organizedData[i][col] >= data:
-            visibleLookUp = False
-
-    if visibleLookUp:
+    
+    treesLookingUp = [organizedData[i][col] for i in range(row + 1, len(organizedData))]
+    if max(treesLookingUp) < data:
+        # is visible looking up
         return True
+
    
-    visibleLookRight = True
-    for j in range(0,col):
-        if organizedData[row][j] >= data:
-            visibleLookRight = False
-
-    if visibleLookRight:
+    treesLookingRight = [organizedData[row][j] for j in range(0,col)]
+    if max(treesLookingRight) < data:
+        # is visible looking right
         return True
 
-    visibleLookLeft = True
-    for j in range(col + 1, len(organizedData[0])):
-        if organizedData[row][j] >= data:
-            visibleLookLeft = False
-
-    if visibleLookLeft:
+    
+    treesLookingLeft = [organizedData[row][j] for j in range(col + 1, len(organizedData[0]))]
+    if max(treesLookingLeft) < data:
+        # is visible looking right
         return True
         
     return False
@@ -82,4 +73,4 @@ def findVisible(dataList):
     visibleInnerTress = calculateVisibleInnerTrees(organizedData)
     return visibleBorders + visibleInnerTress
 
-
+print(findVisible(dataList))
